@@ -1,10 +1,6 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from "react-native";
-import {
-  AntDesign,
-  MaterialIcons,
-  MaterialCommunityIcons
-} from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Actions } from "react-native-router-flux";
 import { withTheme } from "../../contexts/ThemeContext";
 

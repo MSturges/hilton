@@ -4,6 +4,7 @@ const {
   GraphQLID,
   GraphQLNonNull,
   GraphQLString,
+  UserInputError
 } = graphql;
 
 const ReservationType = require("./reservationType");
@@ -44,17 +45,30 @@ const Mutations = {
       args: {
         hotelID: { type: new GraphQLNonNull(GraphQLID) },
         roomID: { type: new GraphQLNonNull(GraphQLID) },
-        customerName: { type: GraphQLString },
-        arivalDate: { type: GraphQLString },
-        departDate: { type: GraphQLString }
+        hotelName: { type: new GraphQLNonNull(GraphQLString) },
+        customerName: { type: new GraphQLNonNull(GraphQLString) },
+        arivalDate: { type: new GraphQLNonNull(GraphQLString) },
+        departDate: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(
         parentValue,
         { hotelID, roomID, hotelName, customerName, arivalDate, departDate }
       ) {
+        if (
+          !hotelID ||
+          !roomID ||
+          !hotelName ||
+          !customerName ||
+          !arivalDate ||
+          !departDate
+        ) {
+          throw new Error("Form Arguments invalid");
+        }
+
         return CreateReservation({
           hotelID,
           roomID,
+          hotelName,
           customerName,
           arivalDate,
           departDate

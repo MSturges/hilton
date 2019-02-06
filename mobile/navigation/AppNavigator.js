@@ -7,22 +7,27 @@ import HotelRooms from "../screens/HotelRooms";
 import CreateReservation from "../screens/CreateReservation";
 // reservation stack
 import Reservations from "../screens/Reservations";
-import ViewReservation from "../screens/ViewReservation";
 // settings stack
 import Settings from "../screens/Settings";
 
-const AppNavigator = () => {
+const AppNavigator = props => {
   return (
     <Router>
       <Scene key="root" hideNavBar>
         <Stack key="hotels">
           <Scene key="hotels" component={Hotels} title="Hotels" />
-          <Scene back key="hotelRooms" component={HotelRooms} title="Rooms" />
+          <Scene
+            back
+            key="hotelRooms"
+            component={HotelRooms}
+            title={props.title}
+          />
           <Scene
             back
             key="createReservation"
             component={CreateReservation}
             title="Make Reservation"
+            roomData={props.roomData}
           />
         </Stack>
         <Stack key="reservations">
@@ -30,12 +35,6 @@ const AppNavigator = () => {
             key="reservations"
             component={Reservations}
             title="Reservations"
-          />
-          <Scene
-            back
-            key="reservation"
-            component={ViewReservation}
-            title="Reservation"
           />
         </Stack>
         <Stack key="settings">

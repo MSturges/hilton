@@ -13,7 +13,6 @@ const Queries = {
       description: "Get all hotels",
       resolve() {
         return GetHotels().then(res => {
-          console.log("res", res);
           return res;
         });
       }

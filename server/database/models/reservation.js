@@ -6,9 +6,10 @@ const ReservationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "hotel"
   },
+  hotelName: String,
   customerName: String,
   arivalDate: String,
-  departDate: String,
+  departDate: String
 });
 
 const Reservation = mongoose.model("reservation", ReservationSchema);

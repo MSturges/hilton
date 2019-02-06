@@ -1,29 +1,35 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
 import { withTheme } from "../../contexts/ThemeContext";
 import Layout from "../../components/Layout";
+import ListItem from "./ListItem";
 
 const HotelRooms = props => {
-  const s = styles(props.theme);
+  const { theme, rooms, hotelID, title } = props;
+  const s = styles(theme);
 
   return (
     <Layout>
-      <View style={s.container}>
-        <Text style={s.text}>HotelRooms</Text>
-      </View>
+      <FlatList
+        data={rooms}
+        style={s.list}
+        keyExtractor={room => room.id}
+        renderItem={({ item }) => (
+          <ListItem item={item} hotelID={hotelID} hotelName={title} />
+        )}
+      />
     </Layout>
   );
 };
 
 const styles = theme =>
   StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: theme.primaryOne
-    },
-    text: {
-      color: theme.fontPrimary
+    list: {
+      padding: 16,
+      alignSelf: "stretch",
+      backgroundColor: theme.primaryOne,
+      zIndex: 1
     }
   });
 

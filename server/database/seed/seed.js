@@ -19,14 +19,12 @@ const hotelSeedData = [
     rooms: [
       {
         roomName: "Singel Fox",
-        available: true,
         price: 100.0,
         beds: 1,
         baths: 1
       },
       {
         roomName: "Double Fox",
-        available: true,
         price: 1750.0,
         beds: 2,
         baths: 1.5
@@ -39,14 +37,12 @@ const hotelSeedData = [
     rooms: [
       {
         roomName: "Singel Fox",
-        available: true,
         price: 100.0,
         beds: 1,
         baths: 1
       },
       {
         roomName: "Double Fox",
-        available: true,
         price: 1750.0,
         beds: 2,
         baths: 1.5
@@ -59,14 +55,12 @@ const hotelSeedData = [
     rooms: [
       {
         roomName: "Singel Fox",
-        available: true,
         price: 100.0,
         beds: 1,
         baths: 1
       },
       {
         roomName: "Double Fox",
-        available: true,
         price: 1750.0,
         beds: 2,
         baths: 1.5
@@ -79,14 +73,12 @@ const hotelSeedData = [
     rooms: [
       {
         roomName: "Singel Fox",
-        available: true,
         price: 100.0,
         beds: 1,
         baths: 1
       },
       {
         roomName: "Double Fox",
-        available: true,
         price: 1750.0,
         beds: 2,
         baths: 1.5

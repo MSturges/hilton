@@ -24,11 +24,11 @@ module.exports = async ({
   const reservation = new Reservation({
     hotelID,
     roomID,
+    hotelName,
     customerName,
     arivalDate,
     departDate
   });
 
-  return reservation.save()
-
+  return reservation.save();
 };

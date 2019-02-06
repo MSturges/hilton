@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./index.js",
     "dev": "nodemon ./index.js",
-    "seedDB": "node server/database/seed/seed.js"
+    "seedDB": "node database/seed/seed.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-express": "^2.3.3",
+    "connect": "^3.6.6",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",

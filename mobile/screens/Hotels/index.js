@@ -1,52 +1,27 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
 import { withTheme } from "../../contexts/ThemeContext";
 import Layout from "../../components/Layout";
+import ListItem from "./ListItem";
 
 const Hotels = props => {
   const s = styles(props.theme);
 
-  // return (
-  //   <Layout>
-  //     <View style={s.container}>
-  //       <Text style={s.text}>HotelRooms</Text>
-  //     </View>
-  //   </Layout>
-  // );
-  // return (
-  //   <Query query={RatesQuery} variables={{ first: 10 }}>
-  //     {({ loading, data }) => {
-  //       if (loading) return null;
-
-  //       // console.error("data", data.rates.totalCount);
-
-  //       return (
-  //         <Layout>
-  //           <View style={s.container}>
-  //             <Text style={s.text}>HotelRooms: {data.rates.totalCount}</Text>
-  //           </View>
-  //         </Layout>
-  //       );
-  //     }}
-  //   </Query>
-  // );
   return (
     <Query query={HotelQuery}>
-      {({ loading, data, error }) => {
-        console.log("loading", loading);
+      {({ loading, data }) => {
         if (loading) return <Text>Loading</Text>;
-
-        console.error("error", error);
-        console.error("data", data);
-
         return (
           <Layout>
-            <View style={s.container}>
-              <Text style={s.text}>HotelRooms: </Text>
-            </View>
+            <FlatList
+              data={data.getHotels}
+              style={s.list}
+              keyExtractor={room => room.id}
+              renderItem={ListItem}
+            />
           </Layout>
         );
       }}
@@ -58,26 +33,25 @@ const HotelQuery = gql`
   query {
     getHotels {
       id
+      name
+      rooms {
+        id
+        roomName
+        price
+        beds
+        baths
+      }
     }
   }
 `;
 
-// const RatesQuery = gql`
-//   query($first: Int) {
-//     rates(first: $first) {
-//       totalCount
-//     }
-//   }
-// `;
-
 const styles = theme =>
   StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: theme.primaryOne
-    },
-    text: {
-      color: theme.fontPrimary
+    list: {
+      padding: 16,
+      alignSelf: "stretch",
+      backgroundColor: theme.primaryOne,
+      zIndex: 1
     }
   });
 
