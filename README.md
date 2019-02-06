@@ -1,5 +1,5 @@
 ```
-No need to run the server,  I have it deployed on heroku.
+No need to run the server,  I have it deployed on heroku. Might need to ping the server to wake it up,  free account.
 
 
 cd mobile
