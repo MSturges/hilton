@@ -19,5 +19,6 @@ type checking using typescript.
 Refactor components to be more reusable.
 Add images and change the ColorContext to fit Hilton better.
 Add Animations for all lists.
+Error handling
 
 ```
